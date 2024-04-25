@@ -1,0 +1,361 @@
+@import "normalize"
+@import "vars"
+@import "mixins"
+@import "modal"
+@import "swiper-cards"
+
+//Кнопка вфеф каталог
+.to-catalog > img
+  transition: all 0.3s ease-in
+  width: 183px
+  &:hover
+    transform: scale(110%)
+    -webkit-filter: drop-shadow(10px 10px 20px $scAccent)
+    filter: drop-shadow(10px 10px 20px $scAccent)
+
+
+
+//Количество пунктов в верхнем меню
+$menuItemsQuantity: 3
+
+//Верхняя строка
+.top-bar
+  height: $topBarHeight_Desktop
+  position: fixed
+  z-index: 99
+  width: 100%
+  top: 0
+  background-color: $esLightTransparency
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  padding: 1rem 0
+  transition: all 0.3s ease-out
+  box-sizing: border-box
+  &--active
+    height: calc($burgerItemHeight_Desktop + $burgerItemHeight_Desktop * $menuItemsQuantity)
+    @include drop-shadow(.5rem, 0, 1.5rem, $esBlackShadow)
+
+
+//Навигация в верхней строке
+.nav
+  display: flex
+  justify-content: space-between
+  align-items: center
+  flex-direction: row
+
+  &__right
+    display: flex
+    align-items: center
+    gap: 1rem
+    justify-content: flex-end
+    height: 2.5rem
+
+.phone-number
+  font-size: 2rem
+  line-height: 2rem
+  padding-bottom: .2rem
+
+.burger__menu
+  overflow: hidden
+  transform: scaleY(0)
+  transition: all 0.3s ease-out
+  &--active
+    transform: scaleY(1)
+
+  ul
+    width: 100%
+
+.burger__item
+  line-height: 100%
+  padding-top: 2rem
+
+.menu-link
+  display: block
+  width: fit-content
+  height: 2rem
+  font-size: 1.2rem
+  transition: all 0.3s ease-out
+  padding-bottom: .25rem
+  color: $tcMain
+  box-sizing: border-box
+  border-bottom: 0 solid $scAccent
+
+  &:hover
+    border-bottom: 0.2rem solid $scAccent
+    text-shadow: .5px .5px 1px $scAccent, -.5px -.5px 1px $scAccentLight
+
+
+.btn-cart__top
+  position: relative
+  width: 2rem
+  height: 2rem
+  &_img
+    position: absolute
+    transform: translate(0, -50%)
+    width: 2rem
+    height: 2rem
+
+//КОНЕЦ навигация в верхней строке
+
+.top_gap
+  margin-top: 4.5rem
+
+//Главная большая картинка заг
+.header
+  display: flex
+  flex-direction: row
+  padding-top: 2.5rem
+  h1
+    margin-top: 0
+    margin-bottom: 0
+    font-size: 6rem
+    line-height: 115%
+    color: $tcMain
+    font-weight: $heavy
+    font-style: normal
+
+.to-catalog
+  width: 20rem
+  height: auto
+  img
+    width: 100%
+.main-img
+  display: flex
+  height: 710px
+  justify-content: center
+
+  img
+    object-fit: contain
+
+//КОНЕЦ главная большая картинка заг
+
+
+//Секция Почему мы и в принципе акцентные зоны
+.accent
+  margin-top: 6rem
+  background-color: $scAccent
+  display: flex
+  flex-direction: column
+  padding: 4rem 0
+  align-items: center
+  gap: 3rem
+
+  &_heading
+    font-weight: $plain
+    font-size: 3rem
+    line-height: 115%
+    text-align: center
+    color: $tcMain
+
+  &-item
+    display: flex
+    flex-direction: column
+    align-items: center
+    min-width: 280px
+    gap: 0.5rem
+    &__img
+      margin-bottom: 1rem
+
+
+    &__heading
+      font-weight: $heavy
+      font-size: 1.5rem
+      line-height: 115%
+      text-align: center
+      color: $tcMain
+      margin: .25rem 0 .5rem
+
+    &__text
+      font-weight: $plain
+      font-size: 1.25rem
+      line-height: 115%
+      text-align: center
+      color: $tcMain
+
+.h-flex
+  display: flex
+  flex-direction: row
+  gap: 1.5rem
+
+//Базовый стил для карточек продуктов (особенности скрипта =)
+.product-div
+  display: flex
+  box-sizing: border-box
+
+
+//Галерея продуктов
+.gallery
+  display: grid
+  grid-template-columns: repeat(3, minmax(300px, 360px))
+  column-gap: 2rem
+  row-gap: 2rem
+  padding-top: 4rem
+  padding-bottom: 5rem
+
+.about-product
+  display: flex
+  flex-direction: column
+  gap: 2rem
+  padding-bottom: 3rem
+
+  &__heading
+    font-weight: $black
+    font-size: 3rem
+    line-height: 115%
+    text-align: center
+    color: $tcMain
+
+  &__text
+    font-weight: $plain
+    font-size: 2rem
+    line-height: 135%
+    text-align: center
+    color: $tcMain
+
+.product-item
+  display: flex
+  flex-direction: column
+  height: 34rem
+  border-radius: 1rem
+  background-color: $scBackground
+  padding: 1.25rem
+  transition: all 0.3s ease-out
+  @include drop-shadow(0, 0.25rem, 1rem, $esLightShadow)
+
+  &:first-child
+    filter: none
+    grid-column: 1 / -1
+    align-items: center
+    height: fit-content
+    &:hover
+      filter: none
+
+  &__image
+    border-radius: 0.75rem
+    margin-bottom: 1rem
+    overflow: hidden
+    width: 100%
+    height: auto
+
+  &__heading
+    font-weight: $heavy
+    font-size: 1.75rem
+    line-height: 115%
+    color: $tcMain
+    margin-bottom: 0.5rem
+
+  &__text
+    font-weight: $plain
+    font-size: 1.25rem
+    line-height: 125%
+    color: $tcMain
+
+  &:hover
+    @include drop-shadow(0, 0.25rem, 1rem, $esBlackShadow)
+
+  &__btn
+    margin-top: auto
+    display: flex
+    position: relative
+    width: 100%
+    padding: 0.75rem 1rem 1rem 1rem
+    background-color: $esModalDark
+
+
+.btn__cart
+  position: absolute
+  top: 50%
+  right: 1rem
+  transform: translate(0, -50%)
+  width: 1.5rem
+  height: 1.5rem
+
+.accent_light
+  background-color: $scAccentLight
+.delivery
+  flex-direction: row
+  gap: 2rem
+.to-left
+  align-items: flex-start
+  justify-content: flex-start
+  padding-right: 2rem
+  > p
+    text-align: left
+
+.opinion
+  padding-top: 5rem
+
+.feedback
+  height: 560px
+  width: 280px
+  margin: 0 1rem
+  & > img
+    width: 100%
+    height: fit-content
+    position: absolute
+    top: 50%
+    transform: translate(0, -50%)
+
+.background_pic
+  padding-top: 8rem
+  position: relative
+  display: flex
+  flex-direction: column
+  gap: 2rem
+  padding-bottom: 275px
+
+
+.messengers
+  &__heading
+    font-weight: $plain
+    font-size: 2.5rem
+    z-index: 5
+  &-box
+    width: 100%
+    display: flex
+    flex-direction: row
+    gap: 3rem
+    z-index: 5
+    justify-content: center
+    padding-top: 4rem
+
+  &__phone-number
+    margin: 0 auto
+    font-size: 4rem
+    z-index: 5
+
+.background-img__box
+  position: absolute
+  bottom: 0
+  width: 75hw
+  & > img
+    margin-top: 300px
+    margin-bottom: -3px
+    width: 100%
+
+.footer
+  display: flex
+  background-color: $scDark
+  color: $tcInverted
+  padding: 5rem 0
+  justify-content: center
+
+.cart__background
+  background-color: $esModalDark
+
+.fit_img
+  @include place_img
+
+@import "elements"
+
+.more-feedback
+  padding: 1.25rem
+  grid-column: 1 / -1
+  margin-top: 1rem
+  margin-right: auto
+  margin-left: auto
+  width: 60%
+

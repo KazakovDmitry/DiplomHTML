@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Экзотические фрукты в Уфе{% endblock %}</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
+
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="{% static "img/mango.png" %}" sizes="any">
+  <link rel="icon" href="{% static "img/mango.svg" %}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{% static "img/mango.png" %}">
+
+  <link rel="manifest" href="{% static "site.webmanifest" %}">
+  <link rel="stylesheet" href="https://use.typekit.net/pbh8rbz.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+
+<header class="top-bar" id="top-bar">
+  <nav class="nav center">
+    <button class="btn-reset burger" id="burger-btn">
+      <span class="burger__line"></span>
+      <span class="burger__line"></span>
+      <span class="burger__line"></span>
+    </button>
+    <div class="nav__right">
+      <a href="https://vk.com/fruktarine_ufa" class="margin__right-5 vk-logo-box"><img src="{% static "img/vk_logo.svg" %}"
+                                                                                       alt="Логотип Вконтакте переход на страницу"></a>
+      <span class="phone-number">+7 987 039–19–49</span>
+      <button class="btn-reset btn-basic full-height" type="button">Заказать звонок</button>
+      <a href="{% url "cart:cart_detail" %}" class="btn-reset btn-cart__top margin__left-1-2rem">
+        <svg class="btn-cart__top_img" width="20" height="20" fill="none" viewBox="0 0 34 33"
+             xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2H5.59274C6.0537 2 6.45495 2.3151 6.56423 2.76293L11.2125 21.8106C11.5403 23.154 12.744 24.0993 14.1269 24.0993H28.0527C28.6049 24.0993 29.0527 23.6516 29.0527 23.0993C29.0527 22.5471 28.6049 22.0993 28.0527 22.0993H14.1269C13.666 22.0993 13.2647 21.7842 13.1554 21.3364L12.4376 18.395H29.0371C29.9273 18.395 30.7104 17.8066 30.9581 16.9515L33.5902 7.86552C33.9608 6.5863 33.001 5.30902 31.6692 5.30902H9.88892C9.67084 5.30902 9.46242 5.3434 9.26806 5.40659L8.50721 2.28878C8.17936 0.945304 6.97564 0 5.59274 0H1Z"
+            fill="#869FA6"/>
+          <path
+            d="M15.8599 29.9578C15.8599 31.6412 14.4952 33.006 12.8117 33.006C11.1283 33.006 9.76353 31.6412 9.76353 29.9578C9.76353 28.2743 11.1283 26.9096 12.8117 26.9096C14.4952 26.9096 15.8599 28.2743 15.8599 29.9578Z"
+            fill="#869FA6"/>
+          <path
+            d="M32.6249 29.9578C32.6249 31.6412 31.2602 33.006 29.5767 33.006C27.8933 33.006 26.5286 31.6412 26.5286 29.9578C26.5286 28.2743 27.8933 26.9096 29.5767 26.9096C31.2602 26.9096 32.6249 28.2743 32.6249 29.9578Z"
+            fill="#869FA6"/>
+        </svg>
+        <span class="cart__count">{{ cart|length }}</span>
+      </a>
+    </div>
+  </nav>
+
+  <nav class="burger__menu" id="burger-menu">
+    <ul class="center margin__top-1-2rem">
+      <li class="burger__item"><a class="menu-link" href="{% url "myapp:product_list"%}#product-gallery">Витрина фруктовых корзин</a></li>
+      <li class="burger__item"><a class="menu-link" href="{% url "myapp:product_list"%}#delivery">Условия доставки и оплаты</a></li>
+      <li class="burger__item"><a class="menu-link" href="{% url "myapp:product_list"%}#contacts">Контакты</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer class="footer center">
+  <p class="footer__credits">© Все права защищены. ОГРН 321028000080939  ИНН 027302483046  г. Уфа Пр. Октября 40/1</p>
+</footer>
+
+<script src="{% static "js/app.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+@import "vars"
+@import "mixins"
+@import "elements"
+
+//Экран модального окна
+.modal
+  display: none
+  align-items: center
+  justify-content: center
+  position: fixed
+  z-index: 1000
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  overflow: auto
+  background-color: $esModalDark
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+  &_image
+    z-index: 1001
+
+
+
+//Контейнер модалки для картинки просмотра
+.modal-content
+  position: relative
+  display: flex
+  flex-direction: column
+  background-color: $scBackground
+  width: 40rem
+  height: fit-content
+  overflow: hidden
+  border-radius: 1rem
+  padding-bottom: 2rem
+  &__top-bar
+    margin: 0 -1.5rem
+    position: relative
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: $scAccent
+    padding: 1rem
+  //img
+  //  max-width: calc($desktopWidth / 1.3)
+
+.close-img-btn
+  display: block
+  position: absolute
+  z-index: 1100
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+
+
+/* Стили изображения внутри модального окна */
+.modal-image
+  display: block
+  min-width: 300px
+  border-radius: 1rem
+  overflow: hidden
+
+/* Стили кнопки для закрытия модального окна */
+.close-btn
+  position: absolute
+  top: 5px
+  right: 45px
+  color: $esModalDark
+  font-size: 40px
+  cursor: pointer
+  transition: 0.3s
+
+
+.close-btn:hover,
+.close-btn:focus
+  color: $esLightTransparency
+  text-decoration: none
+  cursor: pointer
+
+.close-modal
+  top: 1.5rem
+  right: 1rem
+  line-height: 0.25rem
+  margin: auto 0
+  color: $tcMain
+  transition: 0.3s
+  &:hover
+    color: $scImportant
+
+.fruits
+  font-size: 1rem
+  line-height: 1.125rem
+  font-weight: $plain
+  margin: 0
+
+
+.show-modal
+  cursor: pointer
+
+.mw-description
+  &__content
+    display: flex
+    flex-direction: row
+    gap: 2rem
+    padding-top: 1.75rem
+    padding-left: 2rem
+    padding-right: 2rem
+    align-items: stretch
+
+  &__img
+    border-radius: 1rem
+    overflow: hidden
+    max-width: 15rem
+    height: auto
+
+    img
+      width: 100%
+      object-fit: contain
+
+  &__text-box
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: max-content
+    font-size: 1.75rem
+
+  &__text-title
+    font-size: 1.5rem
+    font-weight: $bold
+    margin: 0
+
+
+//Корзина покупок Окно заказов
+.order-item
+  display: grid
+  grid-template-columns: 5fr 12fr 5fr 4fr 1fr
+  padding: 1rem 0
+  gap: 1.5rem
+  border-top: 1px solid $scLinesLight
+  &:first-child
+    border-top: none
+
+  &__img-box
+    border-radius: 1rem
+    max-width: 5rem
+    max-height: 5rem
+    overflow: hidden
+  &__img
+    max-width: 100%
+    height: auto
+  &__product-name
+    font-weight: $medium
+    font-size: 1.5rem
+    margin: auto 0
+  > .basic-price
+    margin-top: auto
+    margin-bottom: auto
+    margin-left: auto
+    font-weight: $medium
+    font-size: 1.75rem
+    padding-bottom: 4px
+
+.quantity
+  &-box
+    display: flex
+    flex-direction: row
+    gap: 1rem
+    align-items: center
+  &-value
+    font-size: 1.75rem
+    padding-bottom: 3px
+
+.delete
+  transition: all 0.3s ease-out
+  svg
+    path
+      fill: $scLinesLight
+  &:hover > svg
+    path
+      fill: $scImportant
+.width_50pc
+  width: 50% !important
+  margin-top: 1.5rem
+  margin-left: auto
+  margin-right: auto
+
+.cart_gap-tuner
+  gap: 0
+  padding-bottom: 1rem
+  flex-direction: column
+////Кнопка корзинки
+//.btn-cart
+//  position: relative
+//  width: 8rem
+//  height: 8rem
+//  //position: absolute
+//  //top: 52%
+//  //right: 1rem
+//  //transform: translate(0, -50%)
+//  //width: 1.25rem

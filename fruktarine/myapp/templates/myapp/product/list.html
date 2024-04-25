@@ -1,0 +1,204 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Экзотические фрукты в Уфе{% endif %}
+{% endblock %}
+{% block content %}
+    <section class="center header top_gap">
+      <h1>Экзотические фрукты в Уфе</h1>
+      <a href="#product-gallery" class="to-catalog"><img src="{% static "img/btn_choose-box.png" %}" alt="Картинка корзины"></a>
+    </section>
+    <div class="main-img">
+      <img src="{% static "img/main_img.jpg" %}" alt="Экзотические фрукты">
+    </div>
+
+    <!--Свайпер-->
+    <section class="center">
+      <div class="swiper swiper__custom" id="product-swiper">
+        <div class="swiper-btn-prev">
+          <div class="arrow-left"></div>
+        </div>
+        <div class="swiper-wrapper container-swipe">
+
+        </div>
+        <div class="swiper-btn-next">
+          <div class="arrow-right"></div>
+        </div>
+      </div>
+    </section>
+    <!--Конец cвайпера-->
+
+    <!--Начало секции "Почему мы?"-->
+    <section class="accent center">
+      <h4 class="accent_heading">Почему мы?</h4>
+      <div class="h-flex">
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon plane.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Авиа-поставка</h5>
+          <p class="accent-item__text">Прямые авиа-поставки от проверенных поставщиков в Россию  из Таиланда и других
+            стран</p>
+        </article>
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon pineapple.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Только свежие плоды</h5>
+          <p class="accent-item__text">Вы получаете исключительно свежие, спелые и сахарные плоды или мы вернем ваши
+            деньги</p>
+        </article>
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon thumb-up.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Работаем более 4 лет</h5>
+          <p class="accent-item__text">Нам доверяют тысячи клиентов, многие из которых становятся постоянными</p>
+        </article>
+      </div>
+    </section>
+    <!--Конец секции "Почему мы?"-->
+
+    <!--Галерея продуктов-->
+    <div class="gallery center container-gallery" id="product-gallery">
+      <div class="product-item about-product">
+        <h2 class="about-product__heading">Фруктовые коробки и корзины</h2>
+        <p class="about-product__text">Фруктовая коробка или корзина — идеальный вариант для подарка. Вы можете сами выбрать
+          наполнение на свой вкус или доверить это нам. Мы соберем фруктовое ассорти по вашему бюджету. Ниже примеры наших
+          подарочных наборов</p>
+      </div>
+    <!--Продукты
+      <div id="main" class="product-list">
+        <h1>{% if category %}{{ category.name }}{% else %}Товары{% endif %}</h1>
+        {% for product in products %}
+            <div class="item">
+                <div class="product-div card-gallery product-item">
+                    <a href="{{ product.get_absolute_url }}">
+                        <div class="img-box show-modal product-item__image">
+                            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                        </div>
+                    </a>
+                    <h2 class="product-item__heading">
+                        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+                    </h2>
+                    <button class="btn-reset btn-basic product-item__btn"><span
+                        class="basic-price price-in-button margin__none">{{ product.price }} р.</span>
+                        <svg class="btn__cart" width="20" height="20" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            ' +
+                            '
+                            <path
+                              d="M1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2H5.59274C6.0537 2 6.45495 2.3151 6.56423 2.76293L11.2125 21.8106C11.5403 23.154 12.744 24.0993 14.1269 24.0993H28.0527C28.6049 24.0993 29.0527 23.6516 29.0527 23.0993C29.0527 22.5471 28.6049 22.0993 28.0527 22.0993H14.1269C13.666 22.0993 13.2647 21.7842 13.1554 21.3364L12.4376 18.395H29.0371C29.9273 18.395 30.7104 17.8066 30.9581 16.9515L33.5902 7.86552C33.9608 6.5863 33.001 5.30902 31.6692 5.30902H9.88892C9.67084 5.30902 9.46242 5.3434 9.26806 5.40659L8.50721 2.28878C8.17936 0.945304 6.97564 0 5.59274 0H1Z"
+                              fill="#869FA6"></path>
+                            ' +
+                            '
+                            <path
+                              d="M15.8599 29.9578C15.8599 31.6412 14.4952 33.006 12.8117 33.006C11.1283 33.006 9.76353 31.6412 9.76353 29.9578C9.76353 28.2743 11.1283 26.9096 12.8117 26.9096C14.4952 26.9096 15.8599 28.2743 15.8599 29.9578Z"
+                              fill="#869FA6"></path>
+                            ' +
+                            '
+                            <path
+                              d="M32.6249 29.9578C32.6249 31.6412 31.2602 33.006 29.5767 33.006C27.8933 33.006 26.5286 31.6412 26.5286 29.9578C26.5286 28.2743 27.8933 26.9096 29.5767 26.9096C31.2602 26.9096 32.6249 28.2743 32.6249 29.9578Z"
+                              fill="#869FA6"></path>
+                            ' +
+                            '
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        {% endfor %}
+      </div>-->
+    </div>
+    <!--Конец Галереи продуктов-->
+
+    <!--Начало секции "Как это работает?"-->
+    <section class="accent center margin__none">
+      <h4 class="accent_heading">Как это работает?</h4>
+      <div class="h-flex">
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon plane.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Вы делаете заказ</h5>
+          <p class="accent-item__text">Вы оформляете заказ на нашем сайте или по телефону или через WhatsApp/Telegram</p>
+        </article>
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon pineapple.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Мы привозим фрукты в Россию</h5>
+          <p class="accent-item__text">Мы осуществляем поставку фруктов раз в неделю</p>
+        </article>
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon thumb-up.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Формируем вашу коробку</h5>
+          <p class="accent-item__text">Мы тщательно отбираем фрукты, оставляя для вас только самые спелые и красивые
+            плоды</p>
+        </article>
+        <article class="accent-item">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon thumb-up.svg" %}" alt="Самолет">
+          </div>
+          <h5 class="accent-item__heading">Доставляем на дом или в офис</h5>
+          <p class="accent-item__text">В удобное вам время курьер доставляет фрукты прямо до ваших дверей</p>
+        </article>
+      </div>
+    </section>
+    <!--Конец секции "Как это работает?"-->
+    <!--Начало секции "Доставка и оплата"-->
+    <section id="delivery" class="accent center margin__none accent_light">
+      <h4 class="accent_heading">Доставка и оплата</h4>
+      <div class="h-flex">
+        <article class="accent-item delivery">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon plane.svg" %}" alt="Самолет">
+          </div>
+          <div class="accent-item to-left">
+            <h5 class="accent-item__heading">Доставка</h5>
+            <p class="accent-item__text">Доставка по городу на заказы до 3000₽ стоит 300₽.
+              В отдалённые районы, такие как: Затон, Черниковка, Инорс, Нижегородка — 400₽. Свыше 3000₽ доставка по городу
+              бесплатная. Другие отдалённые районы по договоренности.</p>
+          </div>
+        </article>
+        <article class="accent-item delivery">
+          <div class="accent-item__img">
+            <img src="{% static "img/article_icon pineapple.svg" %}" alt="Самолет">
+          </div>
+          <div class="accent-item to-left">
+
+            <h5 class="accent-item__heading">Оплата</h5>
+            <p class="accent-item__text">Оплату принимаем наличными, безналичными либо переводом на карту Сбербанка</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!--Конец секции "Доставка и оплата"-->
+    <section class="gallery center container-gallery">
+      <h2 class="about-product__heading product-item">Отзывы наших клиентов</h2>
+      <div class="product-item show-modal">
+        <img src="{% static "img/feedback_1.jpg" %}" alt="">
+      </div>
+      <div class="product-item">
+        <img src="{% static "img/feedback_2.jpg" %}" alt="">
+      </div>
+      <div class="product-item">
+        <img src="{% static "img/feedback_3.jpg" %}" alt="">
+      </div>
+      <button class="btn-reset btn-basic more-feedback"><span class="margin__none">Больше отзывов</span></button>
+    </section>
+
+    <section id="contacts" class="accent center margin__none background_pic">
+      <h4 class="messengers__heading">Желаете задать вопрос или сделать заказ?</h4>
+      <h4 class="messengers__heading">Свяжитесь с нами по номеру:</h4>
+      <span class="messengers__phone-number">+7 987 039–19–49</span>
+      <div class="messengers-box center">
+        <a href="http://api.whatsapp.com/send?phone=79870391949" class="messengers"><img src="{% static "img/whatsapp.svg" %}" alt=""></a>
+        <a href="https://t.me/fruktarine_ufa_bot" class="messengers"><img src="{% static "img/telegram.svg" %}" alt=""></a>
+      </div>
+      <div class="background-img__box">
+        <img src="{% static "img/Background_bottomn.png" %}" alt="Фрукты">
+      </div>
+    </section>
+
+{% endblock %}

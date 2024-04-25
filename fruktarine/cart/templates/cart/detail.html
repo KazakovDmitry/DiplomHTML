@@ -1,0 +1,64 @@
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}
+    Ваша корзина покупок
+{% endblock %}
+
+{% block content %}
+  <!--ЭТО КОРЗИНА. ВСЁ ВЫШЕ ЭТОГО БЛОКА ПРОСТО ДЛЯ МОЕГО УДОБСТВА-->
+  <div class="modal-content__top-bar center">
+    <h2 class="modal-window__name">Ваша корзина покупок</h2>
+  </div>
+
+  <div class="mw-description__content cart_gap-tuner">
+
+    <!--  Блок строки-->
+    <div class="mw-description__content cart_gap-tuner">
+      <div class="order-item center">
+        {% for item in cart %}
+          {% with product=item.product %}
+            <div class="order-item__img-box relative">
+              <a href="{{ product.get_absolute_url }}" class="link-layer pointer"></a>
+              <img class="fit_img" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}
+              {% endif %}">
+            </div>
+            <h3 class="order-item__product-name">{{ product.name }}</h3>
+            <p class="basic-price">{{ item.price }}</p>
+            <div class="quantity-box">
+              <!--      <input class="quantity-chooser" type="number" id="quantity" name="quantity" min="1" max="99" value="1">-->
+
+              {{ item.quantity }}
+            </div>
+            <p class="basic-price">{{ item.total_price }}</p>
+            <div class="delete relative">
+              <a href="{% url "cart:cart_remove" product.id %}" class="link-layer pointer"></a>
+              <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5.94375 9.34496C5.92515 8.99156 5.62359 8.72015 5.27018 8.73875C4.91678 8.75735 4.64537 9.05891 4.66397 9.41232L5.2465 20.4803C5.2651 20.8337 5.56666 21.1051 5.92007 21.0865C6.27347 21.0679 6.54488 20.7663 6.52628 20.4129L5.94375 9.34496Z"
+                  fill="none"/>
+                <path
+                  d="M14.6577 8.73875C14.3043 8.72015 14.0028 8.99156 13.9842 9.34496L13.4016 20.4129C13.383 20.7663 13.6544 21.0679 14.0078 21.0865C14.3612 21.1051 14.6628 20.8337 14.6814 20.4803L15.2639 9.41232C15.2825 9.05891 15.0111 8.75735 14.6577 8.73875Z"
+                  fill="none"/>
+                <path
+                  d="M10.6048 9.37864C10.6048 9.02475 10.3179 8.73786 9.96404 8.73786C9.61015 8.73786 9.32326 9.02475 9.32326 9.37864V20.4466C9.32326 20.8005 9.61015 21.0874 9.96404 21.0874C10.3179 21.0874 10.6048 20.8005 10.6048 20.4466V9.37864Z"
+                  fill="none"/>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M13.4764 2.3301L13.3983 1.14299C13.356 0.499949 12.8221 0 12.1776 0H7.74991C7.10548 0 6.57156 0.49995 6.52925 1.14299L6.45115 2.3301H2.19684C1.58291 2.3301 1.06408 2.78514 0.983992 3.39382L0.6774 5.72392C0.613227 6.21163 0.844457 6.6628 1.22422 6.90998C1.21555 6.98707 1.21411 7.06621 1.22058 7.14665L2.48607 22.8748C2.5372 23.5103 3.06786 24 3.70543 24H16.2226C16.8602 24 17.3908 23.5103 17.4419 22.8748L18.7074 7.14665C18.7139 7.06617 18.7125 6.987 18.7038 6.90987C19.0834 6.66268 19.3146 6.21156 19.2504 5.72392L18.9438 3.39382C18.8638 2.78514 18.3449 2.3301 17.731 2.3301H13.4764ZM2.24793 3.61166L1.95667 5.82525H2.43568L2.43994 5.82524H17.4881L17.4923 5.82525H17.9712L17.6799 3.61166H2.24793ZM7.80446 1.28155L7.73548 2.3301H12.1921L12.1231 1.28155H7.80446ZM2.50307 7.1068L3.75918 22.7184H16.1688L17.4249 7.1068L2.50307 7.1068Z"
+                      fill="none"/>
+              </svg>
+            </div>
+          {% endwith %}
+        {% endfor %}
+        <!--  конец блока строки-->
+      </div>
+      <div>
+        <a href="{% url "myapp:product_list" %}" class="btn-basic add-to-cart width_50pc"><span class="margin__none">Продолжить покупки</span></a>
+        <a href="{% url "orders:order_create" %}" class="btn-basic add-to-cart width_50pc"><span class="margin__none">Оформить заказ</span>
+
+        </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

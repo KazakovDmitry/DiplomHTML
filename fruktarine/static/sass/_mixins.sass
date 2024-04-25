@@ -1,0 +1,10 @@
+@mixin drop-shadow($top, $left, $blur, $color)
+  -webkit-filter: drop-shadow($top $left $blur $color)
+  filter: drop-shadow($top $left $blur $color)
+
+@mixin place_img
+  width: 100%
+  height: fit-content
+  position: absolute
+  top: 50%
+  transform: translate(0, -50%)
